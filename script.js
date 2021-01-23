@@ -639,6 +639,11 @@ function abc(event) {
                 break;
         }
     }
+    if(gameover){
+        if(event.keyCode==32){
+            history.go(0)
+        }
+    }
     if(gameover==false){
         tile++;
         var list = ["c-up-1", "c-up-2", "c-up-3", "c-up-4", "c-down-1", "c-down-2", "c-down-3", "c-down-4", "c-left-1",
@@ -667,14 +672,14 @@ function refresh() {
 function addTile(t,f){
     if(f=="left"){
         if(get("c-right-1").className.indexOf("visible")==-1){
-            var tem=document.createElement("div")
-            tem.className="a-1 b-4"
-            tem.appendChild(document.createTextNode(tile))
-            document.getElementsByTagName("body")[0].appendChild(tem)
+            var tem=document.createElement("div");
+            tem.className="a-1 b-4";
+            tem.appendChild(document.createTextNode(tile));
+            document.getElementsByTagName("body")[0].appendChild(tem);
             document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
         }
         if(get("c-right-2").className.indexOf("visible")==-1){
-            var tem=document.createElement("div")
+            var tem=document.createElement("div");
             tem.className="a-2 b-4"
             tem.appendChild(document.createTextNode(tile))
             document.getElementsByTagName("body")[0].appendChild(tem)
