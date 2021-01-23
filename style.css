@@ -1,0 +1,192 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('Montserrat-Regular-8.otf')
+}
+
+.a-1,
+.a-2,
+.a-3,
+.a-4 {
+    position: absolute;
+    width: 150px !important;
+    height: 150px !important;
+    transition: 1s;
+    font-size: 100px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.a-1 {
+    top: 0;
+}
+
+.a-2 {
+    top: 150px;
+}
+
+.a-3 {
+    top: 300px;
+}
+
+.a-4 {
+    top: 450px;
+}
+
+.b-1 {
+    left: 0;
+}
+
+.b-2 {
+    left: 150px;
+}
+
+.b-3 {
+    left: 300px;
+}
+
+.b-4 {
+    left: 450px;
+}
+
+.c-up,
+.c-down {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    transition: .6s;
+}
+
+.c-left,
+.c-right {
+    width: 30px;
+    height: 150px;
+    position: absolute;
+    transition: .6s;
+}
+
+.visible {
+    background-color: gray;
+    transition: .6s;
+}
+
+.c-up-1 {
+    top: 0;
+    left: 0;
+}
+
+.c-up-2 {
+    top: 0;
+    left: 150px;
+}
+
+.c-up-3 {
+    top: 0;
+    left: 300px;
+}
+
+.c-up-4 {
+    top: 0;
+    left: 450px;
+}
+
+.c-down-1 {
+    top: 570px;
+    left: 0;
+}
+
+.c-down-2 {
+    top: 570px;
+    left: 150px;
+}
+
+.c-down-3 {
+    top: 570px;
+    left: 300px;
+}
+
+.c-down-4 {
+    top: 570px;
+    left: 450px;
+}
+
+.c-left-1 {
+    top: 0;
+    left: 0;
+}
+
+.c-left-2 {
+    top: 150px;
+    left: 0;
+}
+
+.c-left-3 {
+    top: 300px;
+    left: 0;
+}
+
+.c-left-4 {
+    top: 450px;
+    left: 0;
+}
+
+.c-right-1 {
+    top: 0;
+    left: 570px;
+}
+
+.c-right-2 {
+    top: 150px;
+    left: 570px;
+}
+
+.c-right-3 {
+    top: 300px;
+    left: 570px;
+}
+
+.c-right-4 {
+    top: 450px;
+    left: 570px;
+}
+
+.scorediv {
+    position: absolute;
+    left: 600px;
+    text-align: center;
+}
+
+#score {
+    font-size: 30pt;
+}
+
+* {
+    font-family: Montserrat, sans-serif
+}
+.ntc{
+    z-index: 99;
+    position: absolute;
+    width:600px;
+    height:600px;
+    opacity:0;
+    background-color: white;
+    padding: 0;
+    top: 0;
+    left: 0;
+    transition: 0.9s;
+    text-align: center;
+}
+#itx{
+    font-size: 70pt;
+}
+input{
+    background-color: black;
+    border-radius: 10px;
+    width:300px;
+    height:100px;
+    font-size: 60px;
+    color: white;
+    border:none;
+    outline:none
+}
