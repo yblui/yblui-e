@@ -165,15 +165,13 @@ function abc(event) {
                         get("a-4 b-4").className = "a-4 b-3";
                     }
                 }
-                if (Boolean(get("a-1 b-4") && get("c-right-1").className.indexOf("visible") == -1 && get("c-left-1").className
-                        .indexOf(
-                            "visible") != -1) || Boolean(get("a-2 b-4") && get("c-right-2").className.indexOf("visible") ==
+                if (Boolean(get("a-1 b-4") && get("c-right-1").className.indexOf("visible") == -1 && get("c-left-1").classList
+                            .contains("visible")) || Boolean(get("a-2 b-4") && get("c-right-2").className.indexOf("visible") ==
                         -1 &&
-                        get("c-left-2").className.indexOf("visible") != -1) || Boolean(get("a-3 b-4") && get(
+                        get("c-left-2").classList.contains("visible")) || Boolean(get("a-3 b-4") && get(
                             "c-right-3").className
-                        .indexOf("visible") == -1 && get("c-left-3").className.indexOf("visible") != -1) || Boolean(get(
-                            "a-4 b-4") && get("c-right-4").className.indexOf("visible") == -1 && get("c-left-4").className
-                        .indexOf("visible") != -1)) {
+                        .indexOf("visible") == -1 && get("c-left-3").classList.contains("visible")) || Boolean(get(
+                            "a-4 b-4") && get("c-right-4").className.indexOf("visible") == -1 && get("c-left-4").classList.contains("visible"))) {
                     gameover = true;
                     get("ntc").style.opacity = "0.7"
                     break;
@@ -321,14 +319,12 @@ function abc(event) {
                         get("a-4 b-4").className = "a-3 b-4"
                     }
                 }
-                if (Boolean(get("a-4 b-1") && get("c-down-1").className.indexOf("visible") == -1 && get("c-up-1").className
-                        .indexOf(
-                            "visible") != -1) || Boolean(get("a-4 b-2") && get("c-down-2").className.indexOf("visible") ==
+                if (Boolean(get("a-4 b-1") && get("c-down-1").className.indexOf("visible") == -1 && get("c-up-1").classList
+                            .contains("visible")) || Boolean(get("a-4 b-2") && get("c-down-2").className.indexOf("visible") ==
                         -1 &&
-                        get("c-up-2").className.indexOf("visible") != -1) || Boolean(get("a-4 b-3") && get("c-down-3").className
-                        .indexOf("visible") == -1 && get("c-up-3").className.indexOf("visible") != -1) || Boolean(get(
-                            "a-4 b-4") && get("c-down-4").className.indexOf("visible") == -1 && get("c-up-4").className
-                        .indexOf("visible") != -1)) {
+                        get("c-up-2").classList.contains("visible")) || Boolean(get("a-4 b-3") && get("c-down-3").className
+                        .indexOf("visible") == -1 && get("c-up-3").classList.contains("visible")) || Boolean(get(
+                            "a-4 b-4") && get("c-down-4").className.indexOf("visible") == -1 && get("c-up-4").classList.contains("visible"))) {
                     gameover = true;
                     get("ntc").style.opacity = "0.7";
                     break;
