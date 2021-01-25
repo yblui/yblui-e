@@ -159,10 +159,15 @@
     text-align: center;
 }
 
-#score {
+#score, #tle {
     font-size: 30pt;
 }
-
+.nxt{
+    position:absolute;
+    left: 600px;
+    text-align: center;
+    top:200px
+}
 * {
     font-family: Montserrat, sans-serif
 }
