@@ -19,7 +19,7 @@ function mge(mgv) {
 }
 
 function abc(event) {
-    if (gameover == false) {
+    if (gameover == false&&37 <= event.keyCode && event.keyCode <= 40) {
         switch (event.keyCode) {
             case 37:
                 if (get("c-right-1").className.indexOf("visible") == -1) {
@@ -588,14 +588,12 @@ function abc(event) {
                 break;
         }
     }
-    if (gameover == false) {
+    if (gameover == false&&37 <= event.keyCode && event.keyCode <= 40) {
         tile++;
         var list = ["c-up-1", "c-up-2", "c-up-3", "c-up-4", "c-down-1", "c-down-2", "c-down-3", "c-down-4", "c-left-1",
             "c-left-2", "c-left-3", "c-left-4", "c-right-1", "c-right-2", "c-right-3", "c-right-4"
         ]
-        if (37 <= event.keyCode && event.keyCode <= 40) {
-            cvi(get(list[Math.floor(Math.random() * 16)]));
-        }
+        cvi(get(list[Math.floor(Math.random() * 16)]));
     }
     document.getElementById("tle").innerText=tile
 }
@@ -621,7 +619,7 @@ function ati(t, f) {
                 tem = document.createElement("div")
                 tem.className = "a-" + i + " b-4"
                 tem.appendChild(document.createTextNode(tile))
-                document.getElementsByTagName("body")[0].appendChild(tem)
+                get("container").appendChild(tem)
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
             }
         }
@@ -631,7 +629,7 @@ function ati(t, f) {
                 tem = document.createElement("div")
                 tem.className = "a-4 b-" + i
                 tem.appendChild(document.createTextNode(tile))
-                document.getElementsByTagName("body")[0].appendChild(tem)
+                get("container").appendChild(tem)
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
             }
         }
@@ -641,7 +639,7 @@ function ati(t, f) {
                 tem = document.createElement("div")
                 tem.className = "a-" + i + " b-1"
                 tem.appendChild(document.createTextNode(tile))
-                document.getElementsByTagName("body")[0].appendChild(tem)
+                get("container").appendChild(tem)
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
             }
         }
@@ -651,7 +649,7 @@ function ati(t, f) {
                 tem = document.createElement("div")
                 tem.className = "a-1 b-" + i
                 tem.appendChild(document.createTextNode(tile))
-                document.getElementsByTagName("body")[0].appendChild(tem)
+                get("container").appendChild(tem)
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
             }
         }
