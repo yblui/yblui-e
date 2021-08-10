@@ -1,24 +1,31 @@
+* {
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+}
+
 @font-face {
     font-family: Montserrat;
-    src: url('Montserrat-Regular-8.otf')
+    src: url('Montserrat-Regular-8.otf');
 }
-.container{
-    position: absolute;
-    left:calc(50% - 300px)
+
+.container {
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+    position: relative;
 }
-.a-1,
-.a-2,
-.a-3,
-.a-4 {
+
+.a-1, .a-2, .a-3, .a-4 {
     position: absolute;
     width: 150px !important;
     height: 150px !important;
-    transition: 1s;
+    transition: 0.3s;
     font-size: 100px;
     text-align: center;
     color: white;
     background-color: black;
     font-weight: bold;
+    border-radius: 25px;
 }
 
 .a-1 {
@@ -53,22 +60,20 @@
     left: 450px;
 }
 
-.c-up,
-.c-down {
+.c-up, .c-down {
     width: 150px;
     height: 30px;
     position: absolute;
     transition: .6s;
-    z-index: 80
+    z-index: 80;
 }
 
-.c-left,
-.c-right {
+.c-left, .c-right {
     width: 30px;
     height: 150px;
     position: absolute;
     transition: .6s;
-    z-index: 80
+    z-index: 80;
 }
 
 .visible {
@@ -156,26 +161,16 @@
     left: 570px;
 }
 
-.scorediv {
-    position: absolute;
-    left: calc(50% + 300px);
-    text-align: center;
+.scorediv, .nxt {
+    display: inline-block;
 }
 
-#score,
-#tle {
+#score, #tle {
     font-size: 30pt;
 }
 
 .nxt {
-    position: absolute;
-    left: calc(50% + 300px);
-    text-align: center;
     top: 200px;
-}
-
-* {
-    font-family: Montserrat, sans-serif
 }
 
 .ntc {
@@ -184,7 +179,7 @@
     width: 600px;
     height: 600px;
     opacity: 0;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 0;
     top: 0;
     left: 0;
@@ -204,5 +199,5 @@ input {
     font-size: 60px;
     color: white;
     border: none;
-    outline: none
+    outline: none;
 }
