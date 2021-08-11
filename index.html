@@ -13,22 +13,15 @@
 <body onkeydown="abc(event)">
     <div class="scorediv">Score<br /><span id="score">0</span></div>
     <div class="nxt">Next Tile<br /><span id="tle">2</span></div>
+    <div class="bes">Best<br /><span id="bet">0</span></div>
     <div class="container">
         <div class="a-1 b-1">1</div>
-        <div class="a-1 b-2">1</div>
         <div class="a-1 b-3">1</div>
-        <div class="a-1 b-4">1</div>
-        <div class="a-2 b-1">1</div>
         <div class="a-2 b-2">1</div>
-        <div class="a-2 b-3">1</div>
         <div class="a-2 b-4">1</div>
         <div class="a-3 b-1">1</div>
-        <div class="a-3 b-2">1</div>
         <div class="a-3 b-3">1</div>
-        <div class="a-3 b-4">1</div>
-        <div class="a-4 b-1">1</div>
         <div class="a-4 b-2">1</div>
-        <div class="a-4 b-3">1</div>
         <div class="a-4 b-4">1</div>
         <div class="c-up c-up-1 visible"></div>
         <div class="c-up c-up-2"></div>
@@ -47,7 +40,8 @@
         <div class="c-right c-right-3 visible"></div>
         <div class="c-right c-right-4"></div>
         <div class="ntc">
-            <div id="itx">Game Over!</div><input type="button" value="Try Again" onclick="refresh()" />
+            <div id="itx">Game Over!</div>
+            <button onclick="refresh();"><span class="lit">space</span> Try Again</button>
         </div>
     </div>
     <script src="script.js"></script>

@@ -13,6 +13,7 @@
     width: 600px;
     height: 600px;
     position: relative;
+    user-select: none;
 }
 
 .a-1, .a-2, .a-3, .a-4 {
@@ -20,7 +21,7 @@
     width: 150px !important;
     height: 150px !important;
     transition: 0.3s;
-    font-size: 100px;
+    font-size: 90px;
     text-align: center;
     color: white;
     background-color: black;
@@ -64,7 +65,7 @@
     width: 150px;
     height: 30px;
     position: absolute;
-    transition: .6s;
+    transition: 0.6s;
     z-index: 80;
 }
 
@@ -72,13 +73,13 @@
     width: 30px;
     height: 150px;
     position: absolute;
-    transition: .6s;
+    transition: 0.6s;
     z-index: 80;
 }
 
 .visible {
     background-color: gray;
-    transition: .6s;
+    transition: 0.6s;
 }
 
 .c-up-1 {
@@ -161,16 +162,13 @@
     left: 570px;
 }
 
-.scorediv, .nxt {
+.scorediv, .nxt, .bes {
     display: inline-block;
+    margin: 0 30px;
 }
 
-#score, #tle {
+#score, #tle, #bet {
     font-size: 30pt;
-}
-
-.nxt {
-    top: 200px;
 }
 
 .ntc {
@@ -191,13 +189,16 @@
     font-size: 70pt;
 }
 
-input {
+button {
     background-color: black;
     border-radius: 10px;
-    width: 300px;
     height: 100px;
     font-size: 60px;
     color: white;
     border: none;
     outline: none;
+}
+
+.lit{
+    opacity:0.7;
 }

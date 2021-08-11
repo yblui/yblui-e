@@ -14,11 +14,14 @@ function dch(dcv) {
 
 function mge(mgv) {
     get(mgv).innerText = Number(get(mgv).innerText) * 2;
-    document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + Number(get(
-        mgv).innerText);
+    document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + Number(get(mgv).innerText);
 }
 
+if (!document.cookie) document.cookie = "record=0;expires=Thu, 18 Dec 2043 12:00:00 GMT";
+document.getElementById("bet").innerText = Number(document.cookie.replace("record=", "").replace(";expires=Thu, 31 Dec 2099 23:59:59 GMT", ""))
+
 function abc(event) {
+    if (event.keyCode == 32) refresh();
     if (gameover == false && 37 <= event.keyCode && event.keyCode <= 40) {
         switch (event.keyCode) {
             case 37:
@@ -63,138 +66,44 @@ function abc(event) {
                                 "visible")) || Boolean(get("a-4 b-4") && get("c-right-4").className.indexOf("visible") == -1 &&
                                     get("c-left-4").classList.contains("visible"))) {
                     gameover = true;
-                    get("ntc").style.opacity = "1"
+                    get("ntc").style.opacity = "1";
                     break;
                 }
                 ati(tile, "left")
                 break;
             case 38:
-                if (get("c-down-1").className.indexOf("visible") == -1) {
-                    if (get("c-up-1").className.indexOf("visible") == -1 && get("a-1 b-1")) {
-                        dch("a-1 b-1")
-                    }
-                    if (get("a-1 b-1")) {
-                        if (get("a-2 b-1") && get("a-1 b-1").innerText == get("a-2 b-1").innerText) {
-                            dch("a-1 b-1");
-                            mge("a-2 b-1");
-                            get("a-2 b-1").className = "a-1 b-1";
+                for (var a = 1; a <= 4; a++) {
+                    if (get("c-down-" + a).className.indexOf("visible") == -1) {
+                        if (get("c-up-" + a).className.indexOf("visible") == -1 && get("a-1 b-" + a)) {
+                            dch("a-1 b-" + a)
                         }
-                    } else if (get("a-2 b-1")) {
-                        get("a-2 b-1").className = "a-1 b-1";
-                    }
-                    if (get("a-2 b-1")) {
-                        if (get("a-3 b-1") && get("a-2 b-1").innerText == get("a-3 b-1").innerText) {
-                            dch("a-2 b-1");
-                            mge("a-3 b-1");
-                            get("a-3 b-1").className = "a-2 b-1";
+                        if (get("a-1 b-" + a)) {
+                            if (get("a-2 b-" + a) && get("a-1 b-" + a).innerText == get("a-2 b-" + a).innerText) {
+                                dch("a-1 b-" + a);
+                                mge("a-2 b-" + a);
+                                get("a-2 b-" + a).className = "a-1 b-" + a;
+                            }
+                        } else if (get("a-2 b-" + a)) {
+                            get("a-2 b-" + a).className = "a-1 b-" + a;
                         }
-                    } else if (get("a-3 b-1")) {
-                        get("a-3 b-1").className = "a-2 b-1";
-                    }
-                    if (get("a-3 b-1")) {
-                        if (get("a-4 b-1") && get("a-3 b-1").innerText == get("a-4 b-1").innerText) {
-                            dch("a-3 b-1");
-                            mge("a-4 b-1");
-                            get("a-4 b-1").className = "a-3 b-1";
+                        if (get("a-2 b-" + a)) {
+                            if (get("a-3 b-" + a) && get("a-2 b-" + a).innerText == get("a-3 b-" + a).innerText) {
+                                dch("a-2 b-" + a);
+                                mge("a-3 b-" + a);
+                                get("a-3 b-" + a).className = "a-2 b-" + a;
+                            }
+                        } else if (get("a-3 b-" + a)) {
+                            get("a-3 b-" + a).className = "a-2 b-" + a;
                         }
-                    } else if (get("a-4 b-1")) {
-                        get("a-4 b-1").className = "a-3 b-1";
-                    }
-                }
-                if (get("c-down-2").className.indexOf("visible") == -1) {
-                    if (get("c-up-2").className.indexOf("visible") == -1 && get("a-1 b-2")) {
-                        dch("a-1 b-2");
-                    }
-                    if (get("a-1 b-2")) {
-                        if (get("a-2 b-2") && get("a-1 b-2").innerText == get("a-2 b-2").innerText) {
-                            dch("a-1 b-2");
-                            mge("a-2 b-2");
-                            get("a-2 b-2").className = "a-1 b-2";
+                        if (get("a-3 b-" + a)) {
+                            if (get("a-4 b-" + a) && get("a-3 b-" + a).innerText == get("a-4 b-" + a).innerText) {
+                                dch("a-3 b-" + a);
+                                mge("a-4 b-" + a);
+                                get("a-4 b-" + a).className = "a-3 b-" + a;
+                            }
+                        } else if (get("a-4 b-" + a)) {
+                            get("a-4 b-" + a).className = "a-3 b-" + a;
                         }
-                    } else if (get("a-2 b-2")) {
-                        get("a-2 b-2").className = "a-1 b-2";
-                    }
-                    if (get("a-2 b-2")) {
-                        if (get("a-3 b-2") && get("a-2 b-2").innerText == get("a-3 b-2").innerText) {
-                            dch("a-2 b-2");
-                            mge("a-3 b-2");
-                            get("a-3 b-2").className = "a-2 b-2";
-                        }
-                    } else if (get("a-3 b-2")) {
-                        get("a-3 b-2").className = "a-2 b-2";
-                    }
-                    if (get("a-3 b-2")) {
-                        if (get("a-4 b-2") && get("a-3 b-2").innerText == get("a-4 b-2").innerText) {
-                            dch("a-3 b-2");
-                            mge("a-4 b-2");
-                            get("a-4 b-2").className = "a-3 b-2";
-                        }
-                    } else if (get("a-4 b-2")) {
-                        get("a-4 b-2").className = "a-3 b-2";
-                    }
-                }
-                if (get("c-down-3").className.indexOf("visible") == -1) {
-                    if (get("c-up-3").className.indexOf("visible") == -1 && get("a-1 b-3")) {
-                        dch("a-1 b-3")
-                    }
-                    if (get("a-1 b-3")) {
-                        if (get("a-2 b-3") && get("a-1 b-3").innerText == get("a-2 b-3").innerText) {
-                            dch("a-1 b-3");
-                            mge("a-2 b-3");
-                            get("a-2 b-3").className = "a-1 b-3";
-                        }
-                    } else if (get("a-2 b-3")) {
-                        get("a-2 b-3").className = "a-1 b-3"
-                    }
-                    if (get("a-2 b-3")) {
-                        if (get("a-3 b-3") && get("a-2 b-3").innerText == get("a-3 b-3").innerText) {
-                            dch("a-2 b-3")
-                            mge("a-3 b-3")
-                            get("a-3 b-3").className = "a-2 b-3";
-                        }
-                    } else if (get("a-3 b-3")) {
-                        get("a-3 b-3").className = "a-2 b-3"
-                    }
-                    if (get("a-3 b-3")) {
-                        if (get("a-4 b-3") && get("a-3 b-3").innerText == get("a-4 b-3").innerText) {
-                            dch("a-3 b-3")
-                            mge("a-4 b-3")
-                            get("a-4 b-3").className = "a-3 b-3";
-                        }
-                    } else if (get("a-4 b-3")) {
-                        get("a-4 b-3").className = "a-3 b-3"
-                    }
-                }
-                if (get("c-down-4").className.indexOf("visible") == -1) {
-                    if (get("c-up-4").className.indexOf("visible") == -1 && get("a-1 b-4")) {
-                        dch("a-1 b-4")
-                    }
-                    if (get("a-1 b-4")) {
-                        if (get("a-2 b-4") && get("a-1 b-4").innerText == get("a-2 b-4").innerText) {
-                            dch("a-1 b-4")
-                            mge("a-2 b-4")
-                            get("a-2 b-4").className = "a-1 b-4";
-                        }
-                    } else if (get("a-2 b-4")) {
-                        get("a-2 b-4").className = "a-1 b-4"
-                    }
-                    if (get("a-2 b-4")) {
-                        if (get("a-3 b-4") && get("a-2 b-4").innerText == get("a-3 b-4").innerText) {
-                            dch("a-2 b-4")
-                            mge("a-3 b-4")
-                            get("a-3 b-4").className = "a-2 b-4";
-                        }
-                    } else if (get("a-3 b-4")) {
-                        get("a-3 b-4").className = "a-2 b-4"
-                    }
-                    if (get("a-3 b-4")) {
-                        if (get("a-4 b-4") && get("a-3 b-4").innerText == get("a-4 b-4").innerText) {
-                            dch("a-3 b-4")
-                            mge("a-4 b-4")
-                            get("a-4 b-4").className = "a-3 b-4";
-                        }
-                    } else if (get("a-4 b-4")) {
-                        get("a-4 b-4").className = "a-3 b-4"
                     }
                 }
                 if (Boolean(get("a-4 b-1") && get("c-down-1").className.indexOf("visible") == -1 && get("c-up-1").classList
@@ -210,132 +119,38 @@ function abc(event) {
                 ati(tile, "up")
                 break;
             case 39:
-                if (get("c-left-1").className.indexOf("visible") == -1) {
-                    if (get("c-right-1").className.indexOf("visible") == -1 && get("a-1 b-4")) {
-                        dch("a-1 b-4")
-                    }
-                    if (get("a-1 b-4")) {
-                        if (get("a-1 b-3") && get("a-1 b-4").innerText == get("a-1 b-3").innerText) {
-                            dch("a-1 b-4")
-                            mge("a-1 b-3")
-                            get("a-1 b-3").className = "a-1 b-4";
+                for (var b = 1; b <= 4; b++) {
+                    if (get("c-left-" + b).className.indexOf("visible") == -1) {
+                        if (get("c-right-" + b).className.indexOf("visible") == -1 && get("a-" + b + " b-4")) {
+                            dch("a-" + b + " b-4")
                         }
-                    } else if (get("a-1 b-3")) {
-                        get("a-1 b-3").className = "a-1 b-4";
-                    }
-                    if (get("a-1 b-3")) {
-                        if (get("a-1 b-2") && get("a-1 b-3").innerText == get("a-1 b-2").innerText) {
-                            dch("a-1 b-3");
-                            mge("a-1 b-2");
-                            get("a-1 b-2").className = "a-1 b-3";
+                        if (get("a-" + b + " b-4")) {
+                            if (get("a-" + b + " b-3") && get("a-" + b + " b-4").innerText == get("a-" + b + " b-3").innerText) {
+                                dch("a-" + b + " b-4")
+                                mge("a-" + b + " b-3")
+                                get("a-" + b + " b-3").className = "a-" + b + " b-4";
+                            }
+                        } else if (get("a-" + b + " b-3")) {
+                            get("a-" + b + " b-3").className = "a-" + b + " b-4";
                         }
-                    } else if (get("a-1 b-2")) {
-                        get("a-1 b-2").className = "a-1 b-3";
-                    }
-                    if (get("a-1 b-2")) {
-                        if (get("a-1 b-1") && get("a-1 b-2").innerText == get("a-1 b-1").innerText) {
-                            dch("a-1 b-2");
-                            mge("a-1 b-1");
-                            get("a-1 b-1").className = "a-1 b-2";
+                        if (get("a-" + b + " b-3")) {
+                            if (get("a-" + b + " b-2") && get("a-" + b + " b-3").innerText == get("a-" + b + " b-2").innerText) {
+                                dch("a-" + b + " b-3");
+                                mge("a-" + b + " b-2");
+                                get("a-" + b + " b-2").className = "a-" + b + " b-3";
+                            }
+                        } else if (get("a-" + b + " b-2")) {
+                            get("a-" + b + " b-2").className = "a-" + b + " b-3";
                         }
-                    } else if (get("a-1 b-1")) {
-                        get("a-1 b-1").className = "a-1 b-2";
-                    }
-                }
-                if (get("c-left-2").className.indexOf("visible") == -1) {
-                    if (get("c-right-2").className.indexOf("visible") == -1 && get("a-2 b-4")) {
-                        dch("a-2 b-4");
-                    }
-                    if (get("a-2 b-4")) {
-                        if (get("a-2 b-3") && get("a-2 b-4").innerText == get("a-2 b-3").innerText) {
-                            dch("a-2 b-4");
-                            mge("a-2 b-3");
-                            get("a-2 b-3").className = "a-2 b-4";
+                        if (get("a-" + b + " b-2")) {
+                            if (get("a-" + b + " b-1") && get("a-" + b + " b-2").innerText == get("a-" + b + " b-1").innerText) {
+                                dch("a-" + b + " b-2");
+                                mge("a-" + b + " b-1");
+                                get("a-" + b + " b-1").className = "a-" + b + " b-2";
+                            }
+                        } else if (get("a-" + b + " b-1")) {
+                            get("a-" + b + " b-1").className = "a-" + b + " b-2";
                         }
-                    } else if (get("a-2 b-3")) {
-                        get("a-2 b-3").className = "a-2 b-4";
-                    }
-                    if (get("a-2 b-3")) {
-                        if (get("a-2 b-2") && get("a-2 b-3").innerText == get("a-2 b-2").innerText) {
-                            dch("a-2 b-3");
-                            mge("a-2 b-2");
-                            get("a-2 b-2").className = "a-2 b-3";
-                        }
-                    } else if (get("a-2 b-2")) {
-                        get("a-2 b-2").className = "a-2 b-3";
-                    }
-                    if (get("a-2 b-2")) {
-                        if (get("a-2 b-1") && get("a-2 b-2").innerText == get("a-2 b-1").innerText) {
-                            dch("a-2 b-2");
-                            mge("a-2 b-1");
-                            get("a-2 b-1").className = "a-2 b-2";
-                        }
-                    } else if (get("a-2 b-1")) {
-                        get("a-2 b-1").className = "a-2 b-2";
-                    }
-                }
-                if (get("c-left-3").className.indexOf("visible") == -1) {
-                    if (get("c-right-3").className.indexOf("visible") == -1 && get("a-3 b-4")) {
-                        dch("a-3 b-4");
-                    }
-                    if (get("a-3 b-4")) {
-                        if (get("a-3 b-3") && get("a-3 b-4").innerText == get("a-3 b-3").innerText) {
-                            dch("a-3 b-4");
-                            mge("a-3 b-3");
-                            get("a-3 b-3").className = "a-3 b-4";
-                        }
-                    } else if (get("a-3 b-3")) {
-                        get("a-3 b-3").className = "a-3 b-4";
-                    }
-                    if (get("a-3 b-3")) {
-                        if (get("a-3 b-2") && get("a-3 b-3").innerText == get("a-3 b-2").innerText) {
-                            dch("a-3 b-3");
-                            mge("a-3 b-2")
-                            get("a-3 b-2").className = "a-3 b-3";
-                        }
-                    } else if (get("a-3 b-2")) {
-                        get("a-3 b-2").className = "a-3 b-3";
-                    }
-                    if (get("a-3 b-2")) {
-                        if (get("a-3 b-1") && get("a-3 b-2").innerText == get("a-3 b-1").innerText) {
-                            dch("a-3 b-2");
-                            mge("a-3 b-1");
-                            get("a-3 b-1").className = "a-3 b-2";
-                        }
-                    } else if (get("a-3 b-1")) {
-                        get("a-3 b-1").className = "a-3 b-2"
-                    }
-                }
-                if (get("c-left-4").className.indexOf("visible") == -1) {
-                    if (get("c-right-4").className.indexOf("visible") == -1 && get("a-4 b-4")) {
-                        dch("a-4 b-4");
-                    }
-                    if (get("a-4 b-4")) {
-                        if (get("a-4 b-3") && get("a-4 b-4").innerText == get("a-4 b-3").innerText) {
-                            dch("a-4 b-4");
-                            mge("a-4 b-3");
-                            get("a-4 b-3").className = "a-4 b-4";
-                        }
-                    } else if (get("a-4 b-3")) {
-                        get("a-4 b-3").className = "a-4 b-4";
-                    }
-                    if (get("a-4 b-3")) {
-                        if (get("a-4 b-2") && get("a-4 b-3").innerText == get("a-4 b-2").innerText) {
-                            dch("a-4 b-3");
-                            mge("a-4 b-2");
-                            get("a-4 b-2").className = "a-4 b-3";
-                        }
-                    } else if (get("a-4 b-2")) {
-                        get("a-4 b-2").className = "a-4 b-3";
-                    }
-                    if (get("a-4 b-2")) {
-                        if (get("a-4 b-1") && get("a-4 b-2").innerText == get("a-4 b-1").innerText) {
-                            dch("a-4 b-2");
-                            mge("a-4 b-1");
-                            get("a-4 b-1").className = "a-4 b-2";
-                        }
-                    } else if (get("a-4 b-1")) {
-                        get("a-4 b-1").className = "a-4 b-2";
                     }
                 }
                 if (Boolean(get("a-1 b-1") && get("c-left-1").className.indexOf("visible") == -1 && get("c-right-1").classList
@@ -351,132 +166,38 @@ function abc(event) {
                 ati(tile, "right")
                 break;
             case 40:
-                if (get("c-up-1").className.indexOf("visible") == -1) {
-                    if (get("c-down-1").className.indexOf("visible") == -1 && get("a-4 b-1")) {
-                        dch("a-4 b-1");
-                    }
-                    if (get("a-4 b-1")) {
-                        if (get("a-3 b-1") && get("a-4 b-1").innerText == get("a-3 b-1").innerText) {
-                            dch("a-4 b-1");
-                            mge("a-3 b-1");
-                            get("a-3 b-1").className = "a-4 b-1";
+                for (var d = 1; d <= 4; d++) {
+                    if (get("c-up-" + d).className.indexOf("visible") == -1) {
+                        if (get("c-down-" + d).className.indexOf("visible") == -1 && get("a-4 b-" + d)) {
+                            dch("a-4 b-" + d);
                         }
-                    } else if (get("a-3 b-1")) {
-                        get("a-3 b-1").className = "a-4 b-1";
-                    }
-                    if (get("a-3 b-1")) {
-                        if (get("a-2 b-1") && get("a-3 b-1").innerText == get("a-2 b-1").innerText) {
-                            dch("a-3 b-1");
-                            mge("a-2 b-1");
-                            get("a-2 b-1").className = "a-3 b-1";
+                        if (get("a-4 b-" + d)) {
+                            if (get("a-3 b-" + d) && get("a-4 b-" + d).innerText == get("a-3 b-" + d).innerText) {
+                                dch("a-4 b-" + d);
+                                mge("a-3 b-" + d);
+                                get("a-3 b-" + d).className = "a-4 b-" + d;
+                            }
+                        } else if (get("a-3 b-" + d)) {
+                            get("a-3 b-" + d).className = "a-4 b-" + d;
                         }
-                    } else if (get("a-2 b-1")) {
-                        get("a-2 b-1").className = "a-3 b-1";
-                    }
-                    if (get("a-2 b-1")) {
-                        if (get("a-1 b-1") && get("a-2 b-1").innerText == get("a-1 b-1").innerText) {
-                            dch("a-2 b-1");
-                            mge("a-1 b-1");
-                            get("a-1 b-1").className = "a-2 b-1";
+                        if (get("a-3 b-" + d)) {
+                            if (get("a-2 b-" + d) && get("a-3 b-" + d).innerText == get("a-2 b-" + d).innerText) {
+                                dch("a-3 b-" + d);
+                                mge("a-2 b-" + d);
+                                get("a-2 b-" + d).className = "a-3 b-" + d;
+                            }
+                        } else if (get("a-2 b-" + d)) {
+                            get("a-2 b-" + d).className = "a-3 b-" + d;
                         }
-                    } else if (get("a-1 b-1")) {
-                        get("a-1 b-1").className = "a-2 b-1";
-                    }
-                }
-                if (get("c-up-2").className.indexOf("visible") == -1) {
-                    if (get("c-down-2").className.indexOf("visible") == -1 && get("a-4 b-2")) {
-                        dch("a-4 b-2");
-                    }
-                    if (get("a-4 b-2")) {
-                        if (get("a-3 b-2") && get("a-4 b-2").innerText == get("a-3 b-2").innerText) {
-                            dch("a-4 b-2");
-                            mge("a-3 b-2");
-                            get("a-3 b-2").className = "a-4 b-2";
+                        if (get("a-2 b-" + d)) {
+                            if (get("a-1 b-" + d) && get("a-2 b-" + d).innerText == get("a-1 b-" + d).innerText) {
+                                dch("a-2 b-" + d);
+                                mge("a-1 b-" + d);
+                                get("a-1 b-" + d).className = "a-2 b-" + d;
+                            }
+                        } else if (get("a-1 b-" + d)) {
+                            get("a-1 b-" + d).className = "a-2 b-" + d;
                         }
-                    } else if (get("a-3 b-2")) {
-                        get("a-3 b-2").className = "a-4 b-2";
-                    }
-                    if (get("a-3 b-2")) {
-                        if (get("a-2 b-2") && get("a-3 b-2").innerText == get("a-2 b-2").innerText) {
-                            dch("a-3 b-2");
-                            mge("a-2 b-2");
-                            get("a-2 b-2").className = "a-3 b-2";
-                        }
-                    } else if (get("a-2 b-2")) {
-                        get("a-2 b-2").className = "a-3 b-2";
-                    }
-                    if (get("a-2 b-2")) {
-                        if (get("a-1 b-2") && get("a-2 b-2").innerText == get("a-1 b-2").innerText) {
-                            dch("a-2 b-2");
-                            mge("a-1 b-2");
-                            get("a-1 b-2").className = "a-2 b-2";
-                        }
-                    } else if (get("a-1 b-2")) {
-                        get("a-1 b-2").className = "a-2 b-2";
-                    }
-                }
-                if (get("c-up-3").className.indexOf("visible") == -1) {
-                    if (get("c-down-3").className.indexOf("visible") == -1 && get("a-4 b-3")) {
-                        dch("a-4 b-3");
-                    }
-                    if (get("a-4 b-3")) {
-                        if (get("a-3 b-3") && get("a-4 b-3").innerText == get("a-3 b-3").innerText) {
-                            dch("a-4 b-3");
-                            mge("a-3 b-3");
-                            get("a-3 b-3").className = "a-4 b-3";
-                        }
-                    } else if (get("a-3 b-3")) {
-                        get("a-3 b-3").className = "a-4 b-3";
-                    }
-                    if (get("a-3 b-3")) {
-                        if (get("a-2 b-3") && get("a-3 b-3").innerText == get("a-2 b-3").innerText) {
-                            dch("a-3 b-3");
-                            mge("a-2 b-3");
-                            get("a-2 b-3").className = "a-3 b-3";
-                        }
-                    } else if (get("a-2 b-3")) {
-                        get("a-2 b-3").className = "a-3 b-3";
-                    }
-                    if (get("a-2 b-3")) {
-                        if (get("a-1 b-3") && get("a-2 b-3").innerText == get("a-1 b-3").innerText) {
-                            dch("a-2 b-3");
-                            mge("a-1 b-3");
-                            get("a-1 b-3").className = "a-2 b-3";
-                        }
-                    } else if (get("a-1 b-3")) {
-                        get("a-1 b-3").className = "a-2 b-3";
-                    }
-                }
-                if (get("c-up-4").className.indexOf("visible") == -1) {
-                    if (get("c-down-4").className.indexOf("visible") == -1 && get("a-4 b-4")) {
-                        dch("a-4 b-4")
-                    }
-                    if (get("a-4 b-4")) {
-                        if (get("a-3 b-4") && get("a-4 b-4").innerText == get("a-3 b-4").innerText) {
-                            dch("a-4 b-4");
-                            mge("a-3 b-4");
-                            get("a-3 b-4").className = "a-4 b-4";
-                        }
-                    } else if (get("a-3 b-4")) {
-                        get("a-3 b-4").className = "a-4 b-4";
-                    }
-                    if (get("a-3 b-4")) {
-                        if (get("a-2 b-4") && get("a-3 b-4").innerText == get("a-2 b-4").innerText) {
-                            dch("a-3 b-4");
-                            mge("a-2 b-4");
-                            get("a-2 b-4").className = "a-3 b-4";
-                        }
-                    } else if (get("a-2 b-4")) {
-                        get("a-2 b-4").className = "a-3 b-4";
-                    }
-                    if (get("a-2 b-4")) {
-                        if (get("a-1 b-4") && get("a-2 b-4").innerText == get("a-1 b-4").innerText) {
-                            dch("a-2 b-4");
-                            mge("a-1 b-4");
-                            get("a-1 b-4").className = "a-2 b-4";
-                        }
-                    } else if (get("a-1 b-4")) {
-                        get("a-1 b-4").className = "a-2 b-4";
                     }
                 }
                 if (Boolean(get("a-1 b-1") && get("c-up-1").className.indexOf("visible") == -1 && get("c-down-1").classList
@@ -513,16 +234,17 @@ function cvi(che) {
 
 function refresh() {
     if (get("ntc").style.opacity == "1") {
-        document.getElementsByClassName("container")[0].innerHTML = '<div class="a-1 b-1">1</div><div class="a-1 b-2">1</div><div class="a-1 b-3">1</div><div\
-        class="a-1 b-4">1</div><div class="a-2 b-1">1</div><div class="a-2 b-2">1</div><div class="a-2 b-3">1</div><div class="a-2 b-4">1</div><div\
-        class="a-3 b-1">1</div><div class="a-3 b-2">1</div><div class="a-3 b-3">1</div><div class="a-3 b-4">1</div><div class="a-4 b-1">1</div><div\
-        class="a-4 b-2">1</div><div class="a-4 b-3">1</div><div class="a-4 b-4">1</div><div class="c-up c-up-1 visible"></div><div class="c-up c-up-2"></div><div class="c-up c-up-3 visible"></div><div class="c-up c-up-4"></div><div class="c-down c-down-1 visible"></div><div\
-        class="c-down c-down-2 "></div><div class="c-down c-down-3 visible"></div><div class="c-down c-down-4 "></div><div class="c-left c-left-1 visible"></div><div class="c-left c-left-2"></div><div class="c-left c-left-3 visible"></div><div class="c-left c-left-4"></div><div\
-        class="c-right c-right-1 visible"></div><div class="c-right c-right-2"></div><div class="c-right c-right-3 visible"></div><div class="c-right c-right-4"></div><div class="ntc"><div id="itx">Game Over!</div><input type="button" value="Try Again" onclick="refresh()" /></div>';
+        document.getElementsByClassName("container")[0].innerHTML = '<div class="a-1 b-1">1</div><div class="a-1 b-3">1</div><div class="a-2 b-2">1</div>\
+        <div class="a-2 b-4">1</div><div class="a-3 b-1">1</div><div class="a-3 b-3">1</div><div class="a-4 b-2">1</div><div class="a-4 b-4">1</div><div class="c-up c-up-1 visible"></div>\
+        <div class="c-up c-up-2"></div><div class="c-up c-up-3 visible"></div><div class="c-up c-up-4"></div><div class="c-down c-down-1 visible"></div>\
+        <div class="c-down c-down-2 "></div><div class="c-down c-down-3 visible"></div><div class="c-down c-down-4 "></div><div class="c-left c-left-1 visible"></div>\
+        <div class="c-left c-left-2"></div><div class="c-left c-left-3 visible"></div><div class="c-left c-left-4"></div><div class="c-right c-right-1 visible"></div>\
+        <div class="c-right c-right-2"></div><div class="c-right c-right-3 visible"></div><div class="c-right c-right-4"></div><div class="ntc"><div id="itx">Game Over!</div>\
+        <button onclick="refresh();"><span class="lit">space</span> Try Again</button></div>';
         gameover = false;
         tile = 2;
         document.getElementById("score").innerText = "0";
-        document.getElementById("tle").innerText="2"
+        document.getElementById("tle").innerText = "2";
     }
 }
 
@@ -530,11 +252,11 @@ function ati(t, f) {
     if (f == "left") {
         for (var i = 1; i <= 4; i++) {
             if (get("c-right-" + i).className.indexOf("visible") == -1) {
-                tem = document.createElement("div")
-                tem.className = "a-" + i + " b-4"
-                tem.appendChild(document.createTextNode(tile))
-                get("container").appendChild(tem)
-                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
+                tem = document.createElement("div");
+                tem.className = "a-" + i + " b-4";
+                tem.appendChild(document.createTextNode(tile));
+                get("container").appendChild(tem);
+                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile;
             }
         }
     } else if (f == "up") {
@@ -551,7 +273,7 @@ function ati(t, f) {
         for (var i = 1; i <= 4; i++) {
             if (get("c-left-" + i).className.indexOf("visible") == -1) {
                 tem = document.createElement("div")
-                tem.className = "a-" + i + " b-1"
+                tem.className = "a-" + i + " b-1";
                 tem.appendChild(document.createTextNode(tile))
                 get("container").appendChild(tem)
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
@@ -567,5 +289,9 @@ function ati(t, f) {
                 document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
             }
         }
+    }
+    if (Number(document.getElementById("score").innerHTML) > Number(document.cookie.replace("record=", "").replace(";expires=Thu, 31 Dec 2099 23:59:59 GMT", ""))) {
+        document.cookie = "record=" + document.getElementById("score").innerHTML + ";expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        document.getElementById("bet").innerText = document.getElementById("score").innerHTML;
     }
 }
