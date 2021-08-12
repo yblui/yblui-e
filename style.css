@@ -1,6 +1,7 @@
 * {
     font-family: Montserrat, sans-serif;
     text-align: center;
+    transition: 0.3s;
 }
 
 @font-face {
@@ -20,13 +21,13 @@
     position: absolute;
     width: 150px !important;
     height: 150px !important;
-    transition: 0.3s;
     font-size: 90px;
     text-align: center;
     color: white;
     background-color: black;
     font-weight: bold;
     border-radius: 25px;
+    line-height: 1.5;
 }
 
 .a-1 {
@@ -164,7 +165,7 @@
 
 .scorediv, .nxt, .bes {
     display: inline-block;
-    margin: 0 30px;
+    margin: 0 20px;
 }
 
 #score, #tle, #bet {
@@ -183,6 +184,7 @@
     left: 0;
     transition: 0.9s;
     text-align: center;
+    visibility: hidden;
 }
 
 #itx {
@@ -191,14 +193,36 @@
 
 button {
     background-color: black;
-    border-radius: 10px;
-    height: 100px;
-    font-size: 60px;
+    font-size: 40pt;
     color: white;
     border: none;
     outline: none;
 }
 
-.lit{
-    opacity:0.7;
+button:hover {
+    background-color: gainsboro;
+    color: black;
+    cursor: pointer;
+}
+
+.lit {
+    opacity: 0.7;
+}
+
+footer {
+    background-color: #eee;
+    min-height: 300px;
+}
+
+@media screen and (max-width:600px) {
+    .container {
+        transform: scale(calc(2 / 3), calc(2 / 3)) translate(-100px, -100px);
+    }
+    button {
+        font-size: 30pt;
+    }
+}
+
+.gld {
+    background-color: rgba(247, 247, 60, 0.7);
 }

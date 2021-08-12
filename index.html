@@ -11,9 +11,11 @@
 </head>
 
 <body onkeydown="abc(event)">
+    <h1>1000</h1>
     <div class="scorediv">Score<br /><span id="score">0</span></div>
     <div class="nxt">Next Tile<br /><span id="tle">2</span></div>
     <div class="bes">Best<br /><span id="bet">0</span></div>
+    <button onclick="refresh();">New Game</button>
     <div class="container">
         <div class="a-1 b-1">1</div>
         <div class="a-1 b-3">1</div>
@@ -43,7 +45,16 @@
             <div id="itx">Game Over!</div>
             <button onclick="refresh();"><span class="lit">space</span> Try Again</button>
         </div>
+        <div class="ntc gld">
+            <div id="itx">You win!</div>
+            <button onclick="kgo();"><span class="lit">enter</span> Keep going</button>
+            <button onclick="refresh();"><span class="lit">space</span> Try Again</button>
+        </div>
     </div>
+    <footer>
+        <h2>Yblui.github.io</h2>
+        <span class="lit">y</span> <a href="/..">/..</a>
+    </footer>
     <script src="script.js"></script>
 </body>
 
