@@ -21,9 +21,7 @@ function abc(event) {
             case 37:
                 for (i = 1; i <= 4; i++) {
                     if (get("c-right-" + i).className.indexOf("visible") == -1) {
-                        if (get("c-left-" + i).className.indexOf("visible") == -1 && get("a-" + i + " b-1")) {
-                            dch("a-" + i + " b-1");
-                        }
+                        if (get("c-left-" + i).className.indexOf("visible") == -1 && get("a-" + i + " b-1")) dch("a-" + i + " b-1");
                         for (let s = 1; s < 4; s++) {
                             if (get("a-" + i + " b-" + s)) {
                                 if (get("a-" + i + " b-" + (s + 1)) && get("a-" + i + " b-" + s).innerText == get("a-" + i + " b-" + (s + 1)).innerText) {
@@ -31,9 +29,7 @@ function abc(event) {
                                     mge("a-" + i + " b-" + (s + 1));
                                     get("a-" + i + " b-" + (s + 1)).className = "a-" + i + " b-" + s;
                                 }
-                            } else if (get("a-" + i + " b-" + (s + 1))) {
-                                get("a-" + i + " b-" + (s + 1)).className = "a-" + i + " b-" + s;
-                            }
+                            } else if (get("a-" + i + " b-" + (s + 1))) get("a-" + i + " b-" + (s + 1)).className = "a-" + i + " b-" + s;
                         }
                     }
                 }
@@ -60,9 +56,7 @@ function abc(event) {
                                 mge("a-2 b-" + a);
                                 get("a-2 b-" + a).className = "a-1 b-" + a;
                             }
-                        } else if (get("a-2 b-" + a)) {
-                            get("a-2 b-" + a).className = "a-1 b-" + a;
-                        }
+                        } else if (get("a-2 b-" + a)) get("a-2 b-" + a).className = "a-1 b-" + a;
                         if (get("a-2 b-" + a)) {
                             if (get("a-3 b-" + a) && get("a-2 b-" + a).innerText == get("a-3 b-" + a).innerText) {
                                 dch("a-2 b-" + a);
