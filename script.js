@@ -1,16 +1,8 @@
-var stl = "background-color:black;color:white;font-size:30pt;font-family:Microsoft Yahei;";
+var stl = "background-color: black;color: white;font-size: 30pt;font-family: Microsoft Yahei;";
 console.log("%cY B L U I - E", stl);
-var gameover = false,
-    tile = 2,
-    tem, fxi = ["top", "right", "down", "left"], win = false, jm = false;
-
-function get(gev) {
-    return document.getElementsByClassName(gev)[0];
-}
-
-function dch(dcv) {
-    get(dcv).parentNode.removeChild(get(dcv));
-}
+var gameover = false, tile = 2, tem, fxi = ["top", "right", "down", "left"], win = false, jm = false;
+var get = (gev) => document.getElementsByClassName(gev)[0];
+var dch = (dcv) => get(dcv).parentNode.removeChild(get(dcv));
 
 function mge(mgv) {
     get(mgv).innerText = Number(get(mgv).innerText) * 2;
@@ -21,10 +13,10 @@ if (!document.cookie) document.cookie = "record=0;expires=Thu, 18 Dec 2043 12:00
 document.getElementById("bet").innerText = Number(document.cookie.replace("record=", "").replace(";expires=Thu, 31 Dec 2099 23:59:59 GMT", ""));
 
 function abc(event) {
-    if (event.keyCode == 32) { refresh(); }
+    if (event.keyCode == 32) refresh();
     else if (event.keyCode == 89) location.href = "/..";
     event.preventDefault();
-    if (gameover == false && 37 <= event.keyCode && event.keyCode <= 40) {
+    if (!gameover && 37 <= event.keyCode && event.keyCode <= 40) {
         switch (event.keyCode) {
             case 37:
                 for (var i = 1; i <= 4; i++) {
@@ -207,10 +199,10 @@ function abc(event) {
                 }
                 if (Boolean(get("a-1 b-1") && get("c-up-1").className.indexOf("visible") == -1 && get("c-down-1").classList
                     .contains("visible")) || Boolean(get("a-1 b-2") && get("c-up-2").className.indexOf("visible") ==
-                    -1 && get("c-down-2").classList.contains("visible")) || Boolean(get("a-1 b-3") && get("c-up-3")
-                    .className.indexOf("visible") == -1 && get("c-down-3").classList.contains("visible")) ||
+                        -1 && get("c-down-2").classList.contains("visible")) || Boolean(get("a-1 b-3") && get("c-up-3")
+                            .className.indexOf("visible") == -1 && get("c-down-3").classList.contains("visible")) ||
                     Boolean(get("a-1 b-4") && get("c-up-4").className.indexOf("visible") == -1 && get("c-down-4").classList
-                    .contains("visible"))) {
+                        .contains("visible"))) {
                     gameover = true;
                     get("ntc").style.opacity = "1";
                     get("ntc").style.visibility = "visible";
@@ -220,7 +212,7 @@ function abc(event) {
                 break;
         }
     }
-    if (gameover == false && 37 <= event.keyCode && event.keyCode <= 40) {
+    if (!gameover && 37 <= event.keyCode && event.keyCode <= 40) {
         if (jm) {
             tile++;
             jm = false;
@@ -244,13 +236,14 @@ function cvi(che) {
 }
 
 function refresh() {
-    document.getElementsByClassName("container")[0].innerHTML = '<div class="a-1 b-1">1</div><div class="a-1 b-3">1</div><div class="a-2 b-2">1</div>\
-        <div class="a-2 b-4">1</div><div class="a-3 b-1">1</div><div class="a-3 b-3">1</div><div class="a-4 b-2">1</div><div class="a-4 b-4">1</div><div class="c-up c-up-1 visible"></div>\
-        <div class="c-up c-up-2"></div><div class="c-up c-up-3 visible"></div><div class="c-up c-up-4"></div><div class="c-down c-down-1 visible"></div>\
-        <div class="c-down c-down-2 "></div><div class="c-down c-down-3 visible"></div><div class="c-down c-down-4 "></div><div class="c-left c-left-1 visible"></div>\
-        <div class="c-left c-left-2"></div><div class="c-left c-left-3 visible"></div><div class="c-left c-left-4"></div><div class="c-right c-right-1 visible"></div>\
-        <div class="c-right c-right-2"></div><div class="c-right c-right-3 visible"></div><div class="c-right c-right-4"></div><div class="ntc"><div id="itx">Game Over!</div>\
-        <button onclick="refresh();"><span class="lit">space</span> Try Again</button></div><div class="ntc gld"><div id="itx">You win!</div><button onclick="kgo();"><span class="lit">enter</span> Keep going</button><button onclick="refresh();"><span class="lit">space</span> Try Again</button></div>';
+    document.getElementsByClassName("container")[0].innerHTML = '<div class="a-1 b-1">1</div><div class="a-1 b-3">1</div><div class="a-2 b-2">1</div>' +
+        '<div class="a-2 b-4">1</div><div class="a-3 b-1">1</div><div class="a-3 b-3">1</div><div class="a-4 b-2">1</div><div class="a-4 b-4">1</div><div class="c-up c-up-1 visible"></div>' +
+        '<div class="c-up c-up-2"></div><div class="c-up c-up-3 visible"></div><div class="c-up c-up-4"></div><div class="c-down c-down-1 visible"></div>' +
+        '<div class="c-down c-down-2 "></div><div class="c-down c-down-3 visible"></div><div class="c-down c-down-4 "></div><div class="c-left c-left-1 visible"></div>' +
+        '<div class="c-left c-left-2"></div><div class="c-left c-left-3 visible"></div><div class="c-left c-left-4"></div><div class="c-right c-right-1 visible"></div>' +
+        '<div class="c-right c-right-2"></div><div class="c-right c-right-3 visible"></div><div class="c-right c-right-4"></div><div class="ntc"><div id="itx">Game Over!</div>' +
+        '<button onclick="refresh();"><span class="lit">space</span> Try Again</button></div><div class="ntc gld"><div id="itx">You win!</div><button ' +
+        'onclick="kgo();"><span class="lit">enter</span> Keep going</button><button onclick="refresh();"><span class="lit">space</span> Try Again</button></div>';
     gameover = false;
     get("ntc").style.opacity = "0";
     get("ntc").style.visibility = "hidden";
