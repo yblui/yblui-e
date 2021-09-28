@@ -1,6 +1,6 @@
 var stl = "background-color: black;color: white;font-size: 30pt;font-family: Microsoft Yahei;";
 console.log("%cY B L U I - E", stl);
-var gameover = false, tile = 2, tem, fxi = ["top", "right", "down", "left"], win = false, jm = false;
+var gameover = false, tile = 2, tem, fxi = ["top", "right", "down", "left"], win = false, jm = false, i;
 var get = (gev) => document.getElementsByClassName(gev)[0];
 var dch = (dcv) => get(dcv).parentNode.removeChild(get(dcv));
 
@@ -19,37 +19,21 @@ function abc(event) {
     if (!gameover && 37 <= event.keyCode && event.keyCode <= 40) {
         switch (event.keyCode) {
             case 37:
-                for (var i = 1; i <= 4; i++) {
+                for (i = 1; i <= 4; i++) {
                     if (get("c-right-" + i).className.indexOf("visible") == -1) {
                         if (get("c-left-" + i).className.indexOf("visible") == -1 && get("a-" + i + " b-1")) {
                             dch("a-" + i + " b-1");
                         }
-                        if (get("a-" + i + " b-1")) {
-                            if (get("a-" + i + " b-2") && get("a-" + i + " b-1").innerText == get("a-" + i + " b-2").innerText) {
-                                dch("a-" + i + " b-1");
-                                mge("a-" + i + " b-2");
-                                get("a-" + i + " b-2").className = "a-" + i + " b-1";
+                        for (let s = 1; s < 4; s++) {
+                            if (get("a-" + i + " b-" + s)) {
+                                if (get("a-" + i + " b-" + (s + 1)) && get("a-" + i + " b-" + s).innerText == get("a-" + i + " b-" + (s + 1)).innerText) {
+                                    dch("a-" + i + " b-" + s);
+                                    mge("a-" + i + " b-" + (s + 1));
+                                    get("a-" + i + " b-" + (s + 1)).className = "a-" + i + " b-" + s;
+                                }
+                            } else if (get("a-" + i + " b-" + (s + 1))) {
+                                get("a-" + i + " b-" + (s + 1)).className = "a-" + i + " b-" + s;
                             }
-                        } else if (get("a-" + i + " b-2")) {
-                            get("a-" + i + " b-2").className = "a-" + i + " b-1";
-                        }
-                        if (get("a-" + i + " b-2")) {
-                            if (get("a-" + i + " b-3") && get("a-" + i + " b-2").innerText == get("a-" + i + " b-3").innerText) {
-                                dch("a-" + i + " b-2");
-                                mge("a-" + i + " b-3");
-                                get("a-" + i + " b-3").className = "a-" + i + " b-2";
-                            }
-                        } else if (get("a-" + i + " b-3")) {
-                            get("a-" + i + " b-3").className = "a-" + i + " b-2";
-                        }
-                        if (get("a-" + i + " b-3")) {
-                            if (get("a-" + i + " b-4") && get("a-" + i + " b-3").innerText == get("a-" + i + " b-4").innerText) {
-                                dch("a-" + i + " b-3");
-                                mge("a-" + i + " b-4");
-                                get("a-" + i + " b-4").className = "a-" + i + " b-3";
-                            }
-                        } else if (get("a-" + i + " b-4")) {
-                            get("a-" + i + " b-4").className = "a-" + i + " b-3";
                         }
                     }
                 }
@@ -64,14 +48,12 @@ function abc(event) {
                     get("ntc").style.visibility = "visible";
                     break;
                 }
-                ati(tile, "left")
+                ati(tile, "left");
                 break;
             case 38:
                 for (var a = 1; a <= 4; a++) {
                     if (get("c-down-" + a).className.indexOf("visible") == -1) {
-                        if (get("c-up-" + a).className.indexOf("visible") == -1 && get("a-1 b-" + a)) {
-                            dch("a-1 b-" + a)
-                        }
+                        if (get("c-up-" + a).className.indexOf("visible") == -1 && get("a-1 b-" + a)) dch("a-1 b-" + a);
                         if (get("a-1 b-" + a)) {
                             if (get("a-2 b-" + a) && get("a-1 b-" + a).innerText == get("a-2 b-" + a).innerText) {
                                 dch("a-1 b-" + a);
@@ -112,7 +94,7 @@ function abc(event) {
                     get("ntc").style.visibility = "visible";
                     break;
                 }
-                ati(tile, "up")
+                ati(tile, "up");
                 break;
             case 39:
                 for (var b = 1; b <= 4; b++) {
@@ -160,7 +142,7 @@ function abc(event) {
                     get("ntc").style.visibility = "visible";
                     break;
                 }
-                ati(tile, "right")
+                ati(tile, "right");
                 break;
             case 40:
                 for (var d = 1; d <= 4; d++) {
@@ -216,9 +198,7 @@ function abc(event) {
         if (jm) {
             tile++;
             jm = false;
-        } else {
-            jm = true;
-        }
+        } else jm = true;
         var list = ["c-up-1", "c-up-2", "c-up-3", "c-up-4", "c-down-1", "c-down-2", "c-down-3", "c-down-4", "c-left-1",
             "c-left-2", "c-left-3", "c-left-4", "c-right-1", "c-right-2", "c-right-3", "c-right-4"
         ]
@@ -228,11 +208,8 @@ function abc(event) {
 }
 
 function cvi(che) {
-    if (che.classList.contains("visible")) {
-        che.classList.remove("visible");
-    } else {
-        che.classList.add("visible");
-    }
+    if (che.classList.contains("visible")) che.classList.remove("visible");
+    else che.classList.add("visible");
 }
 
 function refresh() {
@@ -254,7 +231,7 @@ function refresh() {
 
 function ati(t, f) {
     if (f == "left") {
-        for (var i = 1; i <= 4; i++) {
+        for (i = 1; i <= 4; i++) {
             if (get("c-right-" + i).className.indexOf("visible") == -1) {
                 tem = document.createElement("div");
                 tem.className = "a-" + i + " b-4";
@@ -264,33 +241,33 @@ function ati(t, f) {
             }
         }
     } else if (f == "up") {
-        for (var i = 1; i <= 4; i++) {
+        for (i = 1; i <= 4; i++) {
             if (get("c-down-" + i).className.indexOf("visible") == -1) {
-                tem = document.createElement("div")
-                tem.className = "a-4 b-" + i
-                tem.appendChild(document.createTextNode(tile))
-                get("container").appendChild(tem)
-                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
+                tem = document.createElement("div");
+                tem.className = "a-4 b-" + i;
+                tem.appendChild(document.createTextNode(tile));
+                get("container").appendChild(tem);
+                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile;
             }
         }
     } else if (f == "right") {
-        for (var i = 1; i <= 4; i++) {
+        for (i = 1; i <= 4; i++) {
             if (get("c-left-" + i).className.indexOf("visible") == -1) {
-                tem = document.createElement("div")
+                tem = document.createElement("div");
                 tem.className = "a-" + i + " b-1";
-                tem.appendChild(document.createTextNode(tile))
-                get("container").appendChild(tem)
-                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
+                tem.appendChild(document.createTextNode(tile));
+                get("container").appendChild(tem);
+                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile;
             }
         }
     } else {
-        for (var i = 1; i <= 4; i++) {
+        for (i = 1; i <= 4; i++) {
             if (get("c-up-" + i).className.indexOf("visible") == -1) {
-                tem = document.createElement("div")
-                tem.className = "a-1 b-" + i
-                tem.appendChild(document.createTextNode(tile))
-                get("container").appendChild(tem)
-                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile
+                tem = document.createElement("div");
+                tem.className = "a-1 b-" + i;
+                tem.appendChild(document.createTextNode(tile));
+                get("container").appendChild(tem);
+                document.getElementById("score").innerHTML = Number(document.getElementById("score").innerHTML) + tile;
             }
         }
     }
